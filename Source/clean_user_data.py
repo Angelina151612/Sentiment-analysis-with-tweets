@@ -1,6 +1,7 @@
 import nltk.corpus
 import pandas as pd
-from clean_data import clean_data
+
+from Source.clean_data import clean_data
 
 nltk.download("stopwords")
 nltk.download("wordnet")

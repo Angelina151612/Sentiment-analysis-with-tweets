@@ -5,8 +5,7 @@ import getch
 from clean_user_data import cleaning
 from get_prediction import create_plots
 
-
-headline = """
+headline = """   
 ############################################################
 #                    Sentiment analysis                    #
 #                       with tweets                        #
@@ -15,7 +14,9 @@ headline = """
 
 def get_twits(name):
     os.mkdir(f"../Users/{name}")
-    comand = f"twint -u {name} --since 2020-01-01 --until 2020-12-31 -o ../Users/{name}/{name}.csv --csv"
+    begin = "2020-01-01"
+    end = "2020-12-31"
+    comand = f"twint -u {name} --since {begin} --until {end} -o ../Users/{name}/{name}.csv --csv"
     process = subprocess.Popen(  # noqa
         comand.split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )

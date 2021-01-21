@@ -19,22 +19,14 @@ def open_file(path):
     return df["tweet"], df["date"]
 
 
-def get_max_len(tweets):
-    maximum = 0
-    for tweet in tweets:
-        words = len(tweet)
-        if words > maximum:
-            maximum = words
-    return maximum
-
-
 def get_dictionary():
     with open("../Data/dict.txt", "rb") as file:
         return pickle.load(file)  # noqa
 
 
 def preapare_tweets(x):
-    max_tweet_len = get_max_len(x)
+    max_tweet = max(x, key=lambda tweet: len(tweet.split()))
+    max_tweet_len = len(max_tweet.split())
     x = x.apply(lambda tweet: tweet.split())
     words = get_dictionary()
     for tweet in x:
@@ -70,13 +62,14 @@ def group_barplot(predictions, date, name):
     data = pd.DataFrame()
     data["month"] = month
     data["predictions"] = predictions
+    indexes = [calendar.month_abbr[x] for x in range(1, 13)]
     negative = (
         data[data.predictions == 0].groupby("month")["predictions"].size().to_frame()
-    )  # .reset_index()
+    )
     positive = (
         data[data.predictions == 1].groupby("month")["predictions"].size().to_frame()
-    )  # .reset_index()
-    indexes = [calendar.month_abbr[x] for x in range(1, 13)]
+    )
+    negative = negative.reindex(list(range(1, 13)))
     df = negative.merge(
         positive, how="left", on="month", suffixes=("_negative", "_positive")
     ).fillna(0)

@@ -30,7 +30,7 @@ def get_dictionary():
         return pickle.load(file)  # noqa
 
 
-def preapare_tweets(x):
+def prepare_tweets(x):
     max_tweet_len = get_max_len(x)
     x = x.apply(lambda tweet: tweet.split())
     words = get_dictionary()
@@ -75,7 +75,7 @@ def plot_data(history, metric):
 
 path = "../Data/prepared_data.csv"
 x, y = open_file(path)
-x, max_tweet_len = preapare_tweets(x)
+x, max_tweet_len = prepare_tweets(x)
 y = prepare_labels(y.values)
 
 x_test = x[:90000]

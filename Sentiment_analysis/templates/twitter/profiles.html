@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            Users
+        </title>
+        <style>
+            body{
+                    margin: 0;
+                }
+            h1 {
+                margin: 0;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet"/>
+        <div class="d-flex flex-column flex-md-row justify-content-end align-items-center p-4 px-md-6 mb-5 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <h5>
+                    <a class="p-2 text-dark font-weight-bold" href="http://127.0.0.1:8000/">
+                        Home
+                    </a>
+                    <a class="p-2 text-dark font-weight-bold" href="http://127.0.0.1:8000/profiles/">
+                        Profiles
+                    </a>
+                    <a class="p-2 text-dark font-weight-bold" href="https://twitter.com/explore">
+                        Twitter
+                    </a>
+                </h5>
+            </nav>
+        </div>
+        {%for inf in all_info%}
+        <div class="container mt-6">
+            <div class="row align-items-start">
+                <div class="alert alert-success">
+                    <div class="col">
+                    </div>
+                    <div class="col">
+                        <a class="alert-link" href="http://127.0.0.1:8000/profiles/{{inf.user}}/">
+                            <p class="mb-11">
+                                {{inf.user}}
+                            </p>
+                        </a>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </body>
+</html>

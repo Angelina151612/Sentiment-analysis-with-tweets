@@ -1,5 +1,9 @@
-from django import forms
+from django.forms import ModelForm
+
+from .models import Usernames
 
 
-class User(forms.Form):
-    user = forms.CharField(label='', max_length = 20,  widget=forms.TextInput(attrs={'id': 'myModel'}))
+class User(ModelForm):
+    class Meta:
+        model = Usernames
+        fields = ["username"]

@@ -46,6 +46,10 @@ def index(request):  # noqa
 
 
 def get_tweets(user):
+    path = os.path.join(settings.BASE_DIR, "../Users/")
+    if not os.path.exists(path):
+        os.mkdir(path)
+
     os.mkdir(os.path.join(settings.BASE_DIR, f"../Users/{user}"))
     begin = "2020-01-01"
     end = "2020-12-31"

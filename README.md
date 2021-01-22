@@ -64,7 +64,7 @@
 Страница пользователя со статистикой:
 ![user](https://github.com/Angelina151612/Sentiment-analysis-with-tweets/blob/master/img/user)
 
-Страница с профилями, которые уже есть в баззе данных.
+Страница с профилями, которые уже есть в базе данных.
 ![profiles](https://github.com/Angelina151612/Sentiment-analysis-with-tweets/blob/master/img/profiles)
 
 Страница с ошибкой при вводе несуществующего имени пользователя.

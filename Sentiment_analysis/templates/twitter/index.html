@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            Sentiment analysis with tweets
+        </title>
+        <style>
+            body{
+                    margin: 0;
+                }
+            h1 {
+                margin: 0;
+                padding: 20px;
+            }
+            .fig {
+                text-align: center;
+                padding: 20px;
+                }
+        </style>
+        <!-- CSS only -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="d-flex flex-column flex-md-row justify-content-end align-items-center p-4 px-md-6 mb-5 bg-white border-bottom box-shadow">
+            <nav class="my-2 my-md-0 mr-md-3">
+                <h5>
+                    <a class="p-2 text-dark font-weight-bold" href="http://127.0.0.1:8000/">
+                        Home
+                    </a>
+                    <a class="p-2 text-dark font-weight-bold" href="http://127.0.0.1:8000/profiles/">
+                        Profiles
+                    </a>
+                    <a class="p-2 text-dark font-weight-bold" href="https://twitter.com/explore">
+                        Twitter
+                    </a>
+                </h5>
+            </nav>
+        </div>
+        <h1 align="center" class="display-5">
+            Sentiment analysis with tweets
+        </h1>
+        <div class="container mt-6">
+            <div class="row align-items-start">
+                <div class="col">
+                </div>
+                <div class="col">
+                    {% for message in messages %}
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <form action="" class="form-control" id="user" method="POST" name="user">
+                        <label for="user">
+                        </label>
+                        {% csrf_token %}
+                                                                                {{ form.as_p }}
+                        <button class="btn btn-danger" type="submit">
+                            Search
+                        </button>
+                    </form>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+        {%if info.error%}
+                            {% load static %}
+        <p class="fig">
+            <img align="center" height="525" onerror="this.style.display='none'" src="{% static info.error %}" width="700"/>
+        </p>
+        {% endif %}
+    </body>
+</html>
